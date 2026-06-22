@@ -1,4 +1,4 @@
-function Vector2(_x = 0, _y = 0) constructor {
+function vec2(_x = 0, _y = 0) constructor {
 	x = _x
 	y = _y
 	
@@ -8,14 +8,14 @@ function Vector2(_x = 0, _y = 0) constructor {
 		y = _y
 	}
 	
-	static add = function(_vector2) {
-		x += _vector2.x
-		y += _vector2.y
+	static add = function(_vec2) {
+		x += _vec2.x
+		y += _vec2.y
 	}
 	
-	static subtract = function(_vector2) {
-		x -= _vector2.x
-		y -= _vector2.y
+	static subtract = function(_vec2) {
+		x -= _vec2.x
+		y -= _vec2.y
 	}
 	
 	static scale = function(_scalar) {
@@ -45,9 +45,9 @@ function Vector2(_x = 0, _y = 0) constructor {
 		y = clamp(y, -_value, _value)
 	}
 	
-	static approach = function(_vector2, _amount) {
-		x = lerp(x, _vector2.x, _amount)
-		y = lerp(y, _vector2.y, _amount)
+	static approach = function(_vec2, _amount) {
+		x = lerp(x, _vec2.x, _amount)
+		y = lerp(y, _vec2.y, _amount)
     }
     
     //Return real
@@ -55,12 +55,12 @@ function Vector2(_x = 0, _y = 0) constructor {
         return sqrt(sqr(x) + sqr(y))
     }
     
-    static get_dot_product = function(_vector2) {
-        return x * _vector2.x + y * _vector2.y
+    static get_dot_product = function(_vec2) {
+        return x * _vec2.x + y * _vec2.y
     }
     
-    static get_component = function(_vector2) {
-        var _alpha = arctan2(_vector2.y, x)
+    static get_component = function(_vec2) {
+        var _alpha = arctan2(_vec2.y, x)
        	var _theta = arctan2(y, x)
        	var _m = get_magnitude()
        	var _a = _m * cos(_theta - _alpha)
@@ -69,22 +69,22 @@ function Vector2(_x = 0, _y = 0) constructor {
     
     //Return vec2
     static from_angle = function(_radians) {
-        return new Vector2(cos(_radians), sin(_radians))
+        return new vec2(cos(_radians), sin(_radians))
     }
     
     static get_normalized = function() {
         return copy().normalize()
     }
     
-    static get_component_vector = function(_vector2) {
-        var _v = _vector2.get_normalized()
-       	var _c = get_component(_vector2)
+    static get_component_vector = function(_vec2) {
+        var _v = _vec2.get_normalized()
+       	var _c = get_component(_vec2)
        	_v.scale(_c)
        	return _v
     }
     
     static copy = function() {
-		return new Vector2(x, y)
+		return new vec2(x, y)
 	}
     
     
